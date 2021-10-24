@@ -11,6 +11,7 @@
   "author": "daniel madrid",
   "license": "ISC",
   "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.2.2",
     "@tensorflow-models/mobilenet": "^2.1.0",
     "@tensorflow/tfjs": "^3.10.0",
     "cors": "^2.8.5",

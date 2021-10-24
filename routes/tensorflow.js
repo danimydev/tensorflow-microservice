@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const imageRecognition = require('../components/image_recognition')
+const TensorFlow = require('../components/tensorflow')
 const multer = require('multer')
 
 router.get('/', (req, res) => {
@@ -18,10 +18,21 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-router.post('/image', upload.single('img'), async (req, res) => {
+router.post('/image_classification', upload.single('img'), async (req, res) => {
     try {
-        const predictions = await imageRecognition.classify(req.file.path)
-        // delete file
+        const predictions = await TensorFlow.classify(req.file.path)
+        res.status(201).json({
+            msg: 'Image was uploaded and processed correctly!',
+            predictions
+        })
+    } catch (error) {
+        res.status(401).json(error)
+    }
+})
+
+router.post('/object_detection', upload.single('img'), async (req, res) => {
+    try {
+        const predictions = await TensorFlow.detect(req.file.path)
         res.status(201).json({
             msg: 'Image was uploaded and processed correctly!',
             predictions

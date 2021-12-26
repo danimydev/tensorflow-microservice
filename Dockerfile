@@ -1,8 +1,8 @@
 FROM node
-WORKDIR ./opt/app
+WORKDIR ./
 ENV PORT=3000
 COPY package.json package.json
 RUN npm install
 EXPOSE 3000
-COPY . ./opt/app
+COPY . .
 CMD ["npm", "start"]

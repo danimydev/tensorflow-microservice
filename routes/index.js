@@ -1,7 +1,7 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-const tsRouter = require('./tensorflow')
+const tsRouter = require('./tensorflow');
 
-router.use('/tensorflow', tsRouter)
+router.use('/tensorflow', tsRouter);
 
-module.exports = router
+module.exports = router;

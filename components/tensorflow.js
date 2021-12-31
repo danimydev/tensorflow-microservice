@@ -6,7 +6,7 @@ const { deleteFile, decodedImg } = require('../utils/files');
 module.exports.classify = async path => {
     try {
         const decoded = decodedImg(path);
-        deleteFile(path);
+        //deleteFile(path);
         const model = await mobilenet.load();
         const predicitons = await model.classify(decoded);
         return predicitons;

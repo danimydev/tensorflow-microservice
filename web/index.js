@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+const cors = require('./cors');
 const router = require('./routes');
 
 const { json, urlencoded } = express;
@@ -8,15 +8,12 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
+// Body
 app.use(json());
 app.use(urlencoded({ extended: false }));
 
 // Cors
-const corsOptions = {
-    origin: '*',
-    optionsSuccesStatus: 200,
-};
-app.use(cors(corsOptions));
+app.use(cors.anywhere);
 
 // Routes
 app.use(router);
